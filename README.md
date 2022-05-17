@@ -1,6 +1,6 @@
 # TPO Lab 1
 
-#Variant 100019
+Variant 100019
 
 1. Функция arccos(x)
 
