@@ -18,6 +18,7 @@ public class Graph<T> {
         graph.put(vertex, new LinkedList<>());
     }
 
+    //TODO: Добавить тест на метод
     private void setConnection(T leftVertex, T rightVertex) {
         if (!graph.containsKey(leftVertex)) {
             setVertex(leftVertex);
@@ -28,6 +29,7 @@ public class Graph<T> {
         graph.get(leftVertex).add(rightVertex);
     }
 
+    //TODO: Добавить тест на метод
     private void setVertexConnections(T vertex, LinkedList<T> connections) {
         if (!connections.isEmpty()) connections.forEach((connection) -> setConnection(vertex, connection));
     }
@@ -38,6 +40,7 @@ public class Graph<T> {
         });
     }
 
+    //TODO: Нейминг не по конвенции, методы в Java - глаголы
     public static <T> List<T> BSE(Graph<T> graph, T start) {
         List<T> path = new LinkedList<>();
         if (!graph.getVertices().contains(start)) {

@@ -1,6 +1,7 @@
 package ru.itmo.tpo.task3;
 
 public class Computer {
+    //TODO: Это похоже на дата-класс, значит надо добавить на panelGroup и communicationPanel final
     private BeamPanelGroup panelGroup;
     private CommunicationPanel communicationPanel;
 
