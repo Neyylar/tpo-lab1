@@ -1,7 +1,9 @@
 package ru.itmo.tpo.task3;
 
+//TODO: Данный класс не покрыт изолированно тестами
 public class BeamPanel extends CommunicationPanel {
     private final Integer serialNumber;
+    //TODO: Добавить final
     private LED led;
     private PanelState state = PanelState.UNPLUGGED;
     private PanelCondition condition = PanelCondition.SERVICEABLE;
@@ -22,6 +24,7 @@ public class BeamPanel extends CommunicationPanel {
         this.led.turnOff();
     }
 
+    //TODO: Нет тестов на проверку этого метода
     public void turnOn() {
         if (this.condition == PanelCondition.BROKEN) {
             throw new IllegalStateException("Cant turn on broken panel");
@@ -32,7 +35,7 @@ public class BeamPanel extends CommunicationPanel {
         } else this.state = PanelState.STARTED;
         workingMode();
     }
-
+    //TODO: Нет тестов на проверку этого метода
     public void turnOff() {
         if (this.state == PanelState.STOPPED) throw new IllegalStateException("Panel is not working already");
         else if (this.state == PanelState.UNPLUGGED) {

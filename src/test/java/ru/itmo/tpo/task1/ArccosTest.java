@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ArccosTest {
+    //TODO: Убрать static и final, сделать инициализацию объектов в setUp методе
     private static final TaylorArccos arccos = new TaylorArccos(30);
     private static final TaylorArccos arccosSmallN = new TaylorArccos(2);
     private static final TaylorArccos arccosBigN = new TaylorArccos(200);

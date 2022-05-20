@@ -12,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 public class GraphTest {
+    //TODO: Раставить модификаторы доступа
     private Graph<String> graph;
     LinkedList<LinkedList<String>> connectionsString = new LinkedList<>();
     LinkedList<LinkedList<String>> connectionsInt = new LinkedList<>();
