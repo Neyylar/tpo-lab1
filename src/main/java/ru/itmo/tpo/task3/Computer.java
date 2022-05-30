@@ -1,8 +1,8 @@
 package ru.itmo.tpo.task3;
 
 public class Computer {
-    private BeamPanelGroup panelGroup;
-    private CommunicationPanel communicationPanel;
+    private final BeamPanelGroup panelGroup;
+    private final CommunicationPanel communicationPanel;
 
     public Computer(BeamPanelGroup panelGroup, CommunicationPanel communicationPanel) {
         this.panelGroup = panelGroup;

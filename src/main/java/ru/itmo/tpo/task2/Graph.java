@@ -18,7 +18,7 @@ public class Graph<T> {
         graph.put(vertex, new LinkedList<>());
     }
 
-    private void setConnection(T leftVertex, T rightVertex) {
+    public void setConnection(T leftVertex, T rightVertex) {
         if (!graph.containsKey(leftVertex)) {
             setVertex(leftVertex);
         }
@@ -28,7 +28,7 @@ public class Graph<T> {
         graph.get(leftVertex).add(rightVertex);
     }
 
-    private void setVertexConnections(T vertex, LinkedList<T> connections) {
+    public void setVertexConnections(T vertex, LinkedList<T> connections) {
         if (!connections.isEmpty()) connections.forEach((connection) -> setConnection(vertex, connection));
     }
 

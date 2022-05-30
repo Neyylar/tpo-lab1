@@ -3,9 +3,7 @@ package ru.itmo.tpo.task2;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -13,22 +11,22 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class GraphTest {
     private Graph<String> graph;
-    LinkedList<LinkedList<String>> connectionsString = new LinkedList<>();
-    LinkedList<LinkedList<String>> connectionsInt = new LinkedList<>();
-    LinkedList<LinkedList<String>> connectionsStringOneWay = new LinkedList<>();
-    LinkedList<LinkedList<String>> connectionsToItself = new LinkedList<>();
-    LinkedList<LinkedList<String>> connectionsMixedTypes = new LinkedList<>();
-    List<String> arr1 = new LinkedList(Arrays.asList("A", "B", "C", "D"));
-    List<String> arr2 = new LinkedList(Arrays.asList("B", "A", "C", "D"));
-    List<String> arr3 = new LinkedList(Arrays.asList("C", "B", "A", "D"));
-    List<String> arr4 = new LinkedList(Arrays.asList("D", "B", "A", "C"));
+    private LinkedList<LinkedList<String>> connectionsString = new LinkedList<>();
+    private LinkedList<LinkedList<String>> connectionsInt = new LinkedList<>();
+    private LinkedList<LinkedList<String>> connectionsStringOneWay = new LinkedList<>();
+    private LinkedList<LinkedList<String>> connectionsToItself = new LinkedList<>();
+    private LinkedList<LinkedList<String>> connectionsMixedTypes = new LinkedList<>();
+    private List<String> arr1 = new LinkedList(Arrays.asList("A", "B", "C", "D"));
+    private List<String> arr2 = new LinkedList(Arrays.asList("B", "A", "C", "D"));
+    private List<String> arr3 = new LinkedList(Arrays.asList("C", "B", "A", "D"));
+    private List<String> arr4 = new LinkedList(Arrays.asList("D", "B", "A", "C"));
 
-    List<Integer> arr5 = new LinkedList(Arrays.asList("1", "2"));
-    List<Integer> arr6 = new LinkedList(Arrays.asList("2", "3"));
-    List<Integer> arr7 = new LinkedList(Arrays.asList("3", "2"));
+    private List<Integer> arr5 = new LinkedList(Arrays.asList("1", "2"));
+    private List<Integer> arr6 = new LinkedList(Arrays.asList("2", "3"));
+    private List<Integer> arr7 = new LinkedList(Arrays.asList("3", "2"));
 
-    List<Integer> arr8 = new LinkedList(Arrays.asList("1", "1"));
-    List<Integer> arr9 = new LinkedList(Arrays.asList("2", "2"));
+    private List<Integer> arr8 = new LinkedList(Arrays.asList("1", "1"));
+    private List<Integer> arr9 = new LinkedList(Arrays.asList("2", "2"));
 
     @BeforeEach
     void setUp() {
@@ -81,6 +79,38 @@ public class GraphTest {
         LinkedList<String> outPath = new LinkedList<>(Arrays.asList("A", "B", "C", "D"));
         graph.setAllConnections(connectionsMixedTypes);
         assertEquals(outPath, Graph.BSE(graph, "A"));
+    }
+
+    @Test
+    void testSetConnection() {
+        Set<String> vertices = new HashSet<>();
+        vertices.add("A");
+        vertices.add("B");
+        Map<String, LinkedList<String>> graphTest = new HashMap<>();
+        LinkedList<String> connections = new LinkedList<>(Arrays.asList("B"));
+        graphTest.put("A", connections);
+        graphTest.put("B",  new LinkedList());
+        graph.setConnection("A", "B");
+        assertEquals(vertices, graph.getVertices());
+        assertEquals(graphTest, graph.getGraph());
+    }
+
+    @Test
+    void testSetVertexConnections() {
+        Set<String> vertices = new HashSet<>();
+        vertices.add("A");
+        vertices.add("B");
+        vertices.add("C");
+        vertices.add("D");
+        Map<String, LinkedList<String>> graphTest = new HashMap<>();
+        LinkedList<String> connections = new LinkedList<>(Arrays.asList("B", "C", "D"));
+        graphTest.put("A", connections);
+        graphTest.put("B",  new LinkedList());
+        graphTest.put("C",  new LinkedList());
+        graphTest.put("D",  new LinkedList());
+        graph.setVertexConnections("A", connections);
+        assertEquals(vertices, graph.getVertices());
+        assertEquals(graphTest, graph.getGraph());
     }
 }
 

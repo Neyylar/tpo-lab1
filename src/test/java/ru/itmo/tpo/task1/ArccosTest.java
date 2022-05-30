@@ -1,5 +1,6 @@
 package ru.itmo.tpo.task1;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -10,9 +11,16 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ArccosTest {
-    private static final TaylorArccos arccos = new TaylorArccos(30);
-    private static final TaylorArccos arccosSmallN = new TaylorArccos(2);
-    private static final TaylorArccos arccosBigN = new TaylorArccos(200);
+    private TaylorArccos arccos;
+    private TaylorArccos arccosSmallN;
+    private TaylorArccos arccosBigN;
+
+    @BeforeEach
+    void setUp() {
+        arccos = new TaylorArccos(30);
+        arccosSmallN = new TaylorArccos(2);
+        arccosBigN = new TaylorArccos(200);
+    }
 
     private static boolean almostEquals(double x, double y) {
         return abs(x - y) <= 0.1;
@@ -38,6 +46,7 @@ class ArccosTest {
             0.17231,
             0.32424,
             0.7582,
+            0.99,
             0.9999
     })
     void testWithAcceptableRangePoints(double value) throws SmallNException, BigNException, ArgOutOfBorderException {

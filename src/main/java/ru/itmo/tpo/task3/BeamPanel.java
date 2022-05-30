@@ -2,7 +2,7 @@ package ru.itmo.tpo.task3;
 
 public class BeamPanel extends CommunicationPanel {
     private final Integer serialNumber;
-    private LED led;
+    private final LED led;
     private PanelState state = PanelState.UNPLUGGED;
     private PanelCondition condition = PanelCondition.SERVICEABLE;
 
@@ -53,11 +53,11 @@ public class BeamPanel extends CommunicationPanel {
         this.led.turnOff();
     }
 
-    public void testingMode() {
+    private void testingMode() {
         this.led.flash();
     }
 
-    public void workingMode() {
+    private void workingMode() {
         this.led.freeze();
     }
 }

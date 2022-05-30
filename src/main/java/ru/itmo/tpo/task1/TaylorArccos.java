@@ -18,7 +18,7 @@ public class TaylorArccos {
         double result = 0;
         boolean shift = true;
         boolean neg = false;
-        if (Math.abs(arg) > 0.99) {
+        if (Math.abs(arg) >= 0.99) {
             if (arg < 0) neg = true;
             arg = Math.sqrt(1 - arg * arg);
             shift = false;
